@@ -36,10 +36,8 @@ Contributions are welcome! If you have any suggestions, bug reports, or feature 
 
 ## License
 
-[Include your license information here]
 
 ## Acknowledgements
 
 Special thanks to the following resources for inspiration and guidance:
 
-[Add acknowledgements here]
