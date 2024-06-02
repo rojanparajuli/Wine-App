@@ -55,107 +55,113 @@ class SparklingWinePage extends StatelessWidget {
           style: TextStyle(fontFamily: 'Lora'),
         ),
       ),
-      body: Column(
-        children: [
-          Image.asset(
-            'assets/sparklingwine.jpg',
-            width: 400,
-            height: 400,
-          ),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
-              'Sparkling wine is a type of wine that contains significant levels of carbon dioxide, making it fizzy.  It\'s  often associated with celebrations and special occasions, but it can also be enjoyed as an everyday wine. The effervescence in sparkling wine is achieved through various winemaking methods, with the most famous being the traditional method, used in Champagne production.',
-              style: TextStyle(fontSize: 16.0),
-            ),
-          ),
-          // Obx(() => GestureDetector(
-          //       onTap: () {
-          //         showFullDescription.toggle();
-          //       },
-          //       child: Padding(
-          //         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          //         child: Text(
-          //           showFullDescription.value ? 'Read Less' : 'Read More',
-          //           style: const TextStyle(
-          //             fontSize: 16.0,
-          //             color: Colors.blue,
-          //             decoration: TextDecoration.underline,
-          //           ),
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          // if (showFullDescription.value)
-          //   const Padding(
-          //     padding: EdgeInsets.all(16.0),
-          //     child: Text(
-          //       'White wine is a type of wine that is produced by fermenting grapes without the skins, unlike red wine which is fermented with the skins. The color of white wine can range from pale yellow to golden amber, depending on factors such as the type of grape, winemaking techniques, and aging process. White wines are generally lighter in body compared to red wines and often have higher acidity levels, providing a crisp and refreshing taste. Some of the famous white wines are Chardonnay, Sauvignon Blanc, Riesling, Pinot Grigio, and Moscato.',
-          //       style: TextStyle(fontSize: 16.0),
-          //     ),
-
-          //   ),
-          Expanded(
-            child: GridView.builder(
-              padding: const EdgeInsets.all(16.0),
-              itemCount: whiteWines.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 16.0,
-                mainAxisSpacing: 16.0,
-                childAspectRatio: 0.75,
+      body: SingleChildScrollView(
+        child: Obx(()=>
+         Column(
+            children: [
+              Image.asset(
+                'assets/sparklingwine.jpg',
+                width: 400,
+                height: 400,
               ),
-              itemBuilder: (context, index) {
-                final wine = whiteWines[index];
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => WineDetailPage(wine: wine),
-                      ),
-                    );
-                  },
-                  child: Hero(
-                    tag: wine['name']!,
-                    child: Card(
-                      elevation: 4.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Expanded(
-                            child: ClipRRect(
-                              borderRadius: const BorderRadius.vertical(
-                                top: Radius.circular(16.0),
-                              ),
-                              child: Image.asset(
-                                wine['image']!,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              wine['name']!,
-                              style: const TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
+              const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text(
+                  'Sparkling wine is a type of wine that contains significant levels of carbon dioxide, making it fizzy.  It\'s  often associated with celebrations and special occasions, but it can also be enjoyed as an everyday wine. The effervescence in sparkling wine is achieved through various winemaking methods, with the most famous being the traditional method, used in Champagne production.',
+                  style: TextStyle(fontSize: 16.0),
+                ),
+              ),
+              GestureDetector(
+                    onTap: () {
+                      showFullDescription.toggle();
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(
+                        showFullDescription.value ? 'Read Less' : 'Read More',
+                        style: const TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
                       ),
                     ),
                   ),
-                );
-              },
-            ),
+             
+              if (showFullDescription.value)
+                const Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Text(
+                    'White wine is a type of wine that is produced by fermenting grapes without the skins, unlike red wine which is fermented with the skins. The color of white wine can range from pale yellow to golden amber, depending on factors such as the type of grape, winemaking techniques, and aging process. White wines are generally lighter in body compared to red wines and often have higher acidity levels, providing a crisp and refreshing taste. Some of the famous white wines are Chardonnay, Sauvignon Blanc, Riesling, Pinot Grigio, and Moscato.',
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+          
+                ),
+              SizedBox(
+                height: 750,
+                child: GridView.builder(
+                  padding: const EdgeInsets.all(16.0),
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: whiteWines.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 16.0,
+                    mainAxisSpacing: 16.0,
+                    childAspectRatio: 0.75,
+                  ),
+                  itemBuilder: (context, index) {
+                    final wine = whiteWines[index];
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => WineDetailPage(wine: wine),
+                          ),
+                        );
+                      },
+                      child: Hero(
+                        tag: wine['name']!,
+                        child: Card(
+                          elevation: 4.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Expanded(
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.vertical(
+                                    top: Radius.circular(16.0),
+                                  ),
+                                  child: Image.asset(
+                                    wine['image']!,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  wine['name']!,
+                                  style: const TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
