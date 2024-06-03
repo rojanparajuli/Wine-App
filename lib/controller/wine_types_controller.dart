@@ -8,5 +8,6 @@ class WineController extends GetxController {
     Wine(name: "Rosé Wine", imageUrl: "assets/rosewine.jpg"),
     Wine(name: "Sparkling Wine", imageUrl: "assets/sparklingwine.jpg"),
     Wine(name: "Glasses", imageUrl: "assets/Glasses.jpg"),
+     Wine(name: "Makings", imageUrl: "assets/WInemaking.jpg"),
   ];
 }
