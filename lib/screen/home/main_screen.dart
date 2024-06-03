@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wine/controller/wine_types_controller.dart';
+import 'package:wine/screen/glasses/glasses_screen.dart';
 import 'package:wine/screen/wines/rosewine/rose_wine_screen.dart';
 import 'package:wine/screen/wines/redwine/red_wine_screen.dart';
 import 'package:wine/screen/wines/sparklingwine/sparkling_wine_screen.dart';
@@ -27,6 +28,8 @@ class WinePage extends StatelessWidget {
                 Get.to(() => RoseWinePage());
               } else if (wineController.wines[index].name == "Sparkling Wine") {
                 Get.to(() => SparklingWinePage());
+              }else if (wineController.wines[index].name == "Glasses"){
+                Get.to(()=>Glass());
               }
             },
             child: Padding(
